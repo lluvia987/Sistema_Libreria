@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SisLibreria2Application {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SisLibreria2Application.class, args);
 	}
 

@@ -1,7 +1,14 @@
-package entity;
+package example.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "prestamo")
 public class Prestamo {
+    @Id
     private String cod_prestamo;
     private String id;
     private String codigo;
