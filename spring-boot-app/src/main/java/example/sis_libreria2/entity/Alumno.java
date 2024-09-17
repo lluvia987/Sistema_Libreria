@@ -1,4 +1,4 @@
-package example.entity;
+package example.sis_libreria2.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

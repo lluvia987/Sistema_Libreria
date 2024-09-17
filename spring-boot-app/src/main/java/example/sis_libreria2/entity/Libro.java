@@ -1,4 +1,4 @@
-package example.entity;
+package example.sis_libreria2.entity;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Table(name="libros")
 public class Libro {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String autor;
     private Integer anio;
