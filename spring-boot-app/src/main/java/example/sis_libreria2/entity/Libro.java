@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Libro {
     @Id
     private String id;
+    private String titulo;
     private String autor;
     private Integer anio;
     private String categoria;
@@ -15,8 +16,9 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(String id, String autor, Integer anio, String categoria, Integer cantidad) {
+    public Libro(String id, String titulo, String autor, Integer anio, String categoria, Integer cantidad) {
         this.id = id;
+        this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
         this.categoria = categoria;
@@ -29,6 +31,14 @@ public class Libro {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getAutor() {

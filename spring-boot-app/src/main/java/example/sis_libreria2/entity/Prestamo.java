@@ -1,8 +1,8 @@
 package example.sis_libreria2.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.Temporal;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,16 +12,21 @@ public class Prestamo {
     private String cod_prestamo;
     private String id;
     private String codigo;
-    private Date fecha;
+    private LocalDateTime fecha;
 
     public Prestamo() {
     }
 
-    public Prestamo(String cod_prestamo, String id, String codigo, Date fecha) {
+    public Prestamo(String cod_prestamo, String id, String codigo, LocalDateTime fecha) {
         this.cod_prestamo = cod_prestamo;
         this.id = id;
         this.codigo = codigo;
         this.fecha = fecha;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.fecha = LocalDateTime.now();  // Establece la fecha actual al guardar
     }
 
     public String getCod_prestamo() {
@@ -48,11 +53,11 @@ public class Prestamo {
         this.codigo = codigo;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 }
