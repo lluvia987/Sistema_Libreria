@@ -1,9 +1,9 @@
 package example.sis_libreria2.services;
 
 import example.sis_libreria2.entity.Libro;
+import example.sis_libreria2.exection.ResourceNotFoundException;
 import example.sis_libreria2.repository.LibroRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class LibroServiceImpl implements LibroService {
     public Libro findById(String id) {
         Libro libro = libroRepository.findById(id).orElseThrow(
                 () ->{
-                    throw  new ResourceAccessException("El Libro con el "+id+" no se encuentra");
+                    throw  new ResourceNotFoundException("El Libro con el "+id+" no se encuentra");
                 }
         );
         return libro;

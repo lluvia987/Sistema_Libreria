@@ -1,9 +1,9 @@
 package example.sis_libreria2.services;
 
 import example.sis_libreria2.entity.Alumno;
+import example.sis_libreria2.exection.ResourceNotFoundException;
 import example.sis_libreria2.repository.AlumnoRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     public Alumno findById(String id) {
         Alumno alumno = alumnoRepository.findById(id).orElseThrow(
                 () ->{
-                    throw new ResourceAccessException("Alumno con Codigo "+id+" no se encuentra");
+                    throw new ResourceNotFoundException("Alumno con Codigo "+id+" no se encuentra");
                 }
         );
         return alumno;

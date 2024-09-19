@@ -1,9 +1,9 @@
 package example.sis_libreria2.services;
 
 import example.sis_libreria2.entity.Prestamo;
+import example.sis_libreria2.exection.ResourceNotFoundException;
 import example.sis_libreria2.repository.PrestamoRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class PrestamoServiceImpl implements PrestamoService{
     public Prestamo findById(String id) {
         Prestamo prestamo = prestamoRepository.findById(id).orElseThrow(
                 () ->{
-                    throw new ResourceAccessException("prestamo con id "+id+" no se encuentra");
+                    throw new ResourceNotFoundException("prestamo con id "+id+" no se encuentra");
                 }
         );
         return prestamo;
