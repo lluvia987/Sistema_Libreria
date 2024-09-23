@@ -1,1 +1,40 @@
-<p>libro works!</p>
+<br/>
+<div class="input-group">
+  <a class="btn btn-info"  [routerLink]="'/alumnos/agregar'" >Agregar Libro</a>
+</div>
+<br/>
+<div class="container"><h2>Alumnos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">titulo</th>
+          <th scope="col">autor</th>
+          <th scope="col">año</th>
+          <th scope="col">categoria</th>
+          <th scope="col">cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(libro of libros; track libro.id) {
+          <tr> <!-- Usando forloop.counter -->
+              <td>{{libro.id}}</td>
+              <td>{{libro.titulo}}</td> 
+              <td>{{libro.autor}}</td>
+              <td>{{libro.anio}}</td>
+              <td>{{libro.categoria}}</td>
+              <td>{{libro.cantidad}}</td>
+              <td>
+                <a class="btn btn-info" [routerLink]="['/',libro.id, 'edit']">Editar</a>
+    
+                <a  class="btn btn-danger" (click)="deleteLibro(libro)">Eliminar</a>
+              </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    
+    </div>
+    
+    

@@ -9,7 +9,7 @@ export const routes: Routes = [
         path: 'alumnos', loadComponent: () => import('./components/alumno/alumno.component'),
     },
     {
-        path: 'libros', loadComponent: () => import('./components/alumno/alumno.component'),
+        path: 'libros', loadComponent: () => import('./components/libro/libro.component'),
     },
     {
         path: 'prestamos', loadComponent: () => import('./components/prestamo/prestamo.component'),

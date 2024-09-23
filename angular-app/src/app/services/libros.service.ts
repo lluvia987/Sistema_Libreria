@@ -10,19 +10,19 @@ export class LibrosService {
   private http = inject(HttpClient);
   
   list() {
-    return this.http.get(`http://localhost:8080/api/libros`);
+    return this.http.get<Libro[]>(`http://localhost:8080/api/libros`);
   } 
 
   get(id: string) {
-    return this.http.get(`http://localhost:8080/api/libros/${id}`);
+    return this.http.get<Libro>(`http://localhost:8080/api/libros/${id}`);
   }
 
-  create(alumno: any) {
-    return this.http.post(`http://localhost:8080/api/libros`, alumno);
+  create(libro: Libro) {
+    return this.http.post<Libro>(`http://localhost:8080/api/libros`, libro);
   }
 
-  update(alumno: Libro) {
-    return this.http.put(`http://localhost:8080/api/libros`, alumno);
+  update(id: string, libro: Libro) {
+    return this.http.put<Libro>(`http://localhost:8080/api/libros`, libro);
   }
 
   delete(id: String) {
