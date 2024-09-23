@@ -5,6 +5,8 @@ import { AlumnosService } from '../../services/alumnos.service';
 import { Alumno } from '../../models/alumno.interface';
 import { PrestamosService } from '../../services/prestamos.service';
 import { Prestamo } from '../../models/prestamo.interface';
+import { Libro } from '../../models/libro.interface';
+import { LibrosService } from '../../services/libros.service';
 
 //Constructor->ngOnInit->otras-funciones
 
@@ -22,11 +24,14 @@ export default class AddEntityComponent implements OnInit{
   private route = inject(ActivatedRoute) // proporciona informacion de la ruta actual asi como los parametros de la ruta
   private contactService = inject(AlumnosService); // se encarga de interactuar con la api para sacar datos del backend
   private prestamoService = inject(PrestamosService);
+  private libroService = inject(LibrosService);
   // definimos variables;
   form?: FormGroup;
   form2?: FormGroup;
+  form3?: FormGroup;
   contact?: Alumno;
   prestamos?: Prestamo;
+  libros?: Libro;
   validPrestamo: boolean = false;
   validAlumno: boolean = false;
   validLibro: boolean = false;
@@ -65,9 +70,9 @@ export default class AddEntityComponent implements OnInit{
         }
         if(this.validLibro){
           this.form2 = this.fb.group({
-            cod_prestamo: ['', [Validators.required]],
             id: ['', [Validators.required]],
-            codigo: ['', [Validators.required]],
+            titulo: ['', [Validators.required]],
+            AuthenticatorAttestationResponse: ['', [Validators.required]],
           });
         } 
       });
@@ -106,6 +111,18 @@ export default class AddEntityComponent implements OnInit{
     }else {
       this.prestamoService.create(prestamo_formulario).subscribe(()=>{
         this.router.navigate(['/prestamo']);
+      });
+    }
+  }
+  save_libro() {
+    const libro_formulario = this.form3!.value;
+    if (this.libros) {
+      this.libroService.update(libro_formulario).subscribe(()=>{
+        this.router.navigate(['/libros']);
+      });
+    }else {
+      this.libroService.create(libro_formulario).subscribe(()=>{
+        this.router.navigate(['/libros']);
       });
     }
   }

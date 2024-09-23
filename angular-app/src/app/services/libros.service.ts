@@ -21,7 +21,7 @@ export class LibrosService {
     return this.http.post<Libro>(`http://localhost:8080/api/libros`, libro);
   }
 
-  update(id: string, libro: Libro) {
+  update(libro: Libro) {
     return this.http.put<Libro>(`http://localhost:8080/api/libros`, libro);
   }
 
