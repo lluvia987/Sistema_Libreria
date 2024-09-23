@@ -25,18 +25,18 @@
   @else if(form2) {
     <form  [formGroup] ="form2" (ngSubmit)="save_prestamo()">
       <div class="mb-3">
-        <label for ="codigo">cod_prestamo</label>
-        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="codigo">
+        <label for ="cod_prestamo">Codigo Prestamo</label>
+        <input id="cod_prestamo" type="text" placeholder="codigo prestamo" class="form-control" formControlName="cod_prestamo">
       </div>
 
       <div class="mb-3">
-        <label for ="escuela">ID</label>
-        <input id="escuela" type="text" placeholder="escuela" class="form-control" formControlName="escuela">
+        <label for ="id">ID Libro</label>
+        <input id="id" type="text" placeholder="id del libro" class="form-control" formControlName="id">
       </div>
 
       <div class="mb-3">
         <label for ="codigo">Codigo</label>
-        <input id="nombre" type="text" placeholder="nombre" class="form-control" formControlName="nombre">
+        <input id="codigo" type="text" placeholder="codigo del alumno" class="form-control" formControlName="codigo">
       </div>
   
       <button type="submit" class="btn btn-primary">Agregar Prestamo</button>
@@ -47,28 +47,28 @@
   @else if(form3) {
     <form  [formGroup] ="form3" (ngSubmit)="save_libro()">
       <div class="mb-3">
-        <label for ="codigo">id libro</label>
-        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="codigo">
+        <label for ="id">id libro</label>
+        <input id="id" type="text" placeholder="codigo" class="form-control" formControlName="id">
       </div>
 
       <div class="mb-3">
-        <label for ="titulo">titulo</label>
+        <label for ="titulo">Titulo</label>
         <input id="titulo" type="text" placeholder="escuela" class="form-control" formControlName="titulo">
       </div>
 
       <div class="mb-3">
-        <label for ="autor">autor</label>
-        <input id="autor" type="text" placeholder="nombre" class="form-control" formControlName="autor">
+        <label for ="autor">Autor</label>
+        <input id="autor" type="text" placeholder="autor" class="form-control" formControlName="autor">
       </div>
       
       <div class="mb-3">
-        <label for ="anio">anio</label>
-        <input id="anio" type="text" placeholder="nombre" class="form-control" formControlName="anio">
+        <label for ="anio">Año</label>
+        <input id="anio" type="number" placeholder="año" class="form-control" formControlName="anio">
       </div>
       
       <div class="mb-3">
-        <label for ="categoria">categoria</label>
-        <input id="categoria" type="text" placeholder="nombre" class="form-control" formControlName="cateogria">
+        <label for ="categoria">Categoria</label>
+        <input id="categoria" type="text" placeholder="categoria" class="form-control" formControlName="categoria">
       </div>
   
       <div class="mb-3">

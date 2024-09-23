@@ -72,6 +72,7 @@ export default class AddEntityComponent implements OnInit{
             id: [lib.id, [Validators.required]],
             titulo: [lib.titulo, [Validators.required]],
             autor: [lib.autor, [Validators.required]],
+            anio: [lib.anio, [Validators.required]],
             categoria: [lib.categoria, [Validators.required]],
             cantidad: [lib.cantidad, [Validators.required]],
           });
@@ -99,6 +100,7 @@ export default class AddEntityComponent implements OnInit{
           id: ['', [Validators.required]],
           titulo: ['', [Validators.required]],
           autor: ['', [Validators.required]],
+          anio: ['', [Validators.required]],
           categoria: ['', [Validators.required]],
           cantidad: ['', [Validators.required]],
         });
@@ -126,11 +128,11 @@ export default class AddEntityComponent implements OnInit{
     const prestamo_formulario = this.form2!.value;
     if (this.contact) {
       this.prestamoService.update(prestamo_formulario).subscribe(()=>{
-        this.router.navigate(['/prestamo']);
+        this.router.navigate(['/prestamos']);
       });
     }else {
       this.prestamoService.create(prestamo_formulario).subscribe(()=>{
-        this.router.navigate(['/prestamo']);
+        this.router.navigate(['/prestamos']);
       });
     }
   }
