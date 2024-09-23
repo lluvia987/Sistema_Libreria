@@ -24,14 +24,14 @@ export default class LibroComponent implements OnInit{
     .subscribe(libroAgregar => {
       this.libros = libroAgregar;
   
-    })
+    });
   }
 
   deleteLibro(libro: Libro) {
     this.libroService.delete(libro.id)
     .subscribe(() =>{
       this.loadAll();
-    })
+    });
   }
 
 }
