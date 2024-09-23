@@ -1,11 +1,4 @@
 
-<h2 class="mb-5">
-  @if(contact) {
-    Editar
-  }@else {
-    Nuevo Alumno
-  }
-</h2>
 <div class="row row-cols-3 jusitfy-content-center">
   @if(form) {
     <form  [formGroup] ="form" (ngSubmit)="create_or_save()">
@@ -15,11 +8,7 @@
       </div>
 
       <div class="mb-3">
-<<<<<<< HEAD
         <label for ="escuela">escuela</label>
-=======
-        <label for = "escuela">escuela</label>
->>>>>>> f999075cd0d34bb9b68212d65551eb70f2d4fd0d
         <input id="escuela" type="text" placeholder="escuela" class="form-control" formControlName="escuela">
       </div>
 
@@ -28,17 +17,7 @@
         <input id="nombre" type="text" placeholder="nombre" class="form-control" formControlName="nombre">
       </div>
   
-<<<<<<< HEAD
       <button type="submit" class="btn btn-primary">Agregar Alumno</button>
-=======
-      <button type="submit" class="btn btn-primary" >
-        @if(contact) {
-          Actualizar        
-        }@else {
-          crear Contacto
-        }
-      </button>
->>>>>>> f999075cd0d34bb9b68212d65551eb70f2d4fd0d
 
     </form>
   }
