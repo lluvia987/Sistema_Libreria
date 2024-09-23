@@ -43,4 +43,42 @@
 
     </form>
   }
+
+  @else if(form3) {
+    <form  [formGroup] ="form3" (ngSubmit)="save_libro()">
+      <div class="mb-3">
+        <label for ="codigo">id libro</label>
+        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="codigo">
+      </div>
+
+      <div class="mb-3">
+        <label for ="titulo">titulo</label>
+        <input id="titulo" type="text" placeholder="escuela" class="form-control" formControlName="titulo">
+      </div>
+
+      <div class="mb-3">
+        <label for ="autor">autor</label>
+        <input id="autor" type="text" placeholder="nombre" class="form-control" formControlName="autor">
+      </div>
+      
+      <div class="mb-3">
+        <label for ="anio">anio</label>
+        <input id="anio" type="text" placeholder="nombre" class="form-control" formControlName="anio">
+      </div>
+      
+      <div class="mb-3">
+        <label for ="categoria">categoria</label>
+        <input id="categoria" type="text" placeholder="nombre" class="form-control" formControlName="cateogria">
+      </div>
+  
+      <div class="mb-3">
+        <label for ="cantidad">cantidad</label>
+        <input id="cantidad" type="text" placeholder="nombre" class="form-control" formControlName="cantidad">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Agregar Libro</button>
+
+    </form>
+  }
+
 </div>
