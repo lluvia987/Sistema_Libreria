@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, RouterModule} from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { AlumnosService } from '../../services/alumnos.service';
 import { Alumno } from '../../models/alumno.interface';
+import { PrestamosService } from '../../services/prestamos.service';
+import { Prestamo } from '../../models/prestamo.interface';
 
 //Constructor->ngOnInit->otras-funciones
 
@@ -19,30 +21,64 @@ export default class AddEntityComponent implements OnInit{
   private router = inject(Router); // se usa para nevegar entre rutas de la aplicacion
   private route = inject(ActivatedRoute) // proporciona informacion de la ruta actual asi como los parametros de la ruta
   private contactService = inject(AlumnosService); // se encarga de interactuar con la api para sacar datos del backend
+  private prestamoService = inject(PrestamosService);
   // definimos variables;
   form?: FormGroup;
+  form2?: FormGroup;
   contact?: Alumno;
+  prestamos?: Prestamo;
+  validPrestamo: boolean = false;
+  validAlumno: boolean = false;
+  validLibro: boolean = false;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id') // id es constante(nose modifica)4
     // represetancion estatica de la ruta en el momento, paramMap = contiene los parammtros de la ruta
     if (id) {
-      this.contactService.get(id)
-      .subscribe(contact => {
+      this.contactService.get(id).subscribe(contact => {
         this.contact = contact;
         this.form = this.fb.group({
           codigo: [contact.codigo, [Validators.required]],
           escuela: [contact.escuela, [Validators.required]],
           nombre: [contact.nombre, [Validators.required]],
         });
-      }) 
+      }); 
     } else {
-      this.form = this.fb.group({
-        codigo: ['', [Validators.required]],
-        escuela: ['', [Validators.required]],
-        nombre: ['', [Validators.required]],
-      })
+      this.route.queryParams.subscribe(params => {
+        this.validPrestamo = params['validPrestamo'];
+        this.validAlumno = params['validAlumno'];
+        this.validLibro = params['validLibro'];
+        console.log(this.validPrestamo);
+        if(this.validAlumno){
+          this.form = this.fb.group({
+            codigo: ['', [Validators.required]],
+            escuela: ['', [Validators.required]],
+            nombre: ['', [Validators.required]],
+          });
+        }
+        if(this.validPrestamo){
+          this.form2 = this.fb.group({
+            cod_prestamo: ['', [Validators.required]],
+            id: ['', [Validators.required]],
+            codigo: ['', [Validators.required]],
+          });
+        }
+        if(this.validLibro){
+          this.form2 = this.fb.group({
+            cod_prestamo: ['', [Validators.required]],
+            id: ['', [Validators.required]],
+            codigo: ['', [Validators.required]],
+          });
+        } 
+      });
+
+
+
     }
+  }
+
+  validacion() {
+
   }
 
   create_or_save() {
@@ -59,8 +95,18 @@ export default class AddEntityComponent implements OnInit{
         this.router.navigate(['/alumnos']);
       });
     }
+  }
 
-    
-
+  save_prestamo() {
+    const prestamo_formulario = this.form2!.value;
+    if (this.contact) {
+      this.prestamoService.update(prestamo_formulario).subscribe(()=>{
+        this.router.navigate(['/prestamo']);
+      });
+    }else {
+      this.prestamoService.create(prestamo_formulario).subscribe(()=>{
+        this.router.navigate(['/prestamo']);
+      });
+    }
   }
 }

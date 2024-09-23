@@ -21,4 +21,26 @@
 
     </form>
   }
+
+  @else if(form2) {
+    <form  [formGroup] ="form2" (ngSubmit)="save_prestamo()">
+      <div class="mb-3">
+        <label for ="codigo">cod_prestamo</label>
+        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="codigo">
+      </div>
+
+      <div class="mb-3">
+        <label for ="escuela">ID</label>
+        <input id="escuela" type="text" placeholder="escuela" class="form-control" formControlName="escuela">
+      </div>
+
+      <div class="mb-3">
+        <label for ="codigo">Codigo</label>
+        <input id="nombre" type="text" placeholder="nombre" class="form-control" formControlName="nombre">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Agregar Prestamo</button>
+
+    </form>
+  }
 </div>
