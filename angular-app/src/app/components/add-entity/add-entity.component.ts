@@ -37,53 +37,73 @@ export default class AddEntityComponent implements OnInit{
   validLibro: boolean = false;
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id') // id es constante(nose modifica)4
+    this.route.queryParams.subscribe(params => {
+      this.validPrestamo = params['validPrestamo'];
+      this.validAlumno = params['validAlumno'];
+      this.validLibro = params['validLibro'];
+    });
+
+    const id = this.route.snapshot.paramMap.get('id'); // id es constante(nose modifica)4
     // represetancion estatica de la ruta en el momento, paramMap = contiene los parammtros de la ruta
     if (id) {
-      this.contactService.get(id).subscribe(contact => {
-        this.contact = contact;
-        this.form = this.fb.group({
-          codigo: [contact.codigo, [Validators.required]],
-          escuela: [contact.escuela, [Validators.required]],
-          nombre: [contact.nombre, [Validators.required]],
-        });
-      }); 
-    } else {
-      this.route.queryParams.subscribe(params => {
-        this.validPrestamo = params['validPrestamo'];
-        this.validAlumno = params['validAlumno'];
-        this.validLibro = params['validLibro'];
-        console.log(this.validPrestamo);
-        if(this.validAlumno){
+      if(this.validAlumno){
+        this.contactService.get(id).subscribe(contact => {
+          this.contact = contact;
           this.form = this.fb.group({
-            codigo: ['', [Validators.required]],
-            escuela: ['', [Validators.required]],
-            nombre: ['', [Validators.required]],
+            codigo: [contact.codigo, [Validators.required]],
+            escuela: [contact.escuela, [Validators.required]],
+            nombre: [contact.nombre, [Validators.required]],
           });
-        }
-        if(this.validPrestamo){
+        }); 
+      }
+      if(this.validPrestamo){
+        this.prestamoService.findById(id).subscribe(prest =>{
+          this.prestamos = prest;
           this.form2 = this.fb.group({
-            cod_prestamo: ['', [Validators.required]],
-            id: ['', [Validators.required]],
-            codigo: ['', [Validators.required]],
+            cod_prestamo: [prest.cod_prestamo, [Validators.required]],
+            id: [prest.id, [Validators.required]],
+            codigo: [prest.codigo, [Validators.required]],
           });
-        }
-        if(this.validLibro){
-          this.form2 = this.fb.group({
-            id: ['', [Validators.required]],
-            titulo: ['', [Validators.required]],
-            AuthenticatorAttestationResponse: ['', [Validators.required]],
+        });
+      }
+      if(this.validLibro){
+        this.libroService.get(id).subscribe(lib =>{
+          this.form3 = this.fb.group({
+            id: [lib.id, [Validators.required]],
+            titulo: [lib.titulo, [Validators.required]],
+            autor: [lib.autor, [Validators.required]],
+            categoria: [lib.categoria, [Validators.required]],
+            cantidad: [lib.cantidad, [Validators.required]],
           });
-        } 
-      });
+        });
+      } 
 
+    } else {
 
-
+      if(this.validAlumno){
+        this.form = this.fb.group({
+          codigo: ['', [Validators.required]],
+          escuela: ['', [Validators.required]],
+          nombre: ['', [Validators.required]],
+        });
+      }
+      if(this.validPrestamo){
+        this.form2 = this.fb.group({
+          cod_prestamo: ['', [Validators.required]],
+          id: ['', [Validators.required]],
+          codigo: ['', [Validators.required]],
+        });
+      }
+      if(this.validLibro){
+        this.form3 = this.fb.group({
+          id: ['', [Validators.required]],
+          titulo: ['', [Validators.required]],
+          autor: ['', [Validators.required]],
+          categoria: ['', [Validators.required]],
+          cantidad: ['', [Validators.required]],
+        });
+      } 
     }
-  }
-
-  validacion() {
-
   }
 
   create_or_save() {
