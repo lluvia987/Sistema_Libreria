@@ -1,7 +1,7 @@
 
-
 export interface Prestamo{
+    cod_prestamo: String;
+    id: String;
     codigo: String;
-    escuela: String;
-    nombre: String;
+    fecha: Date;
 }

@@ -20,11 +20,7 @@ export default class AddEntityComponent implements OnInit{
   private route = inject(ActivatedRoute) // proporciona informacion de la ruta actual asi como los parametros de la ruta
   private contactService = inject(AlumnosService); // se encarga de interactuar con la api para sacar datos del backend
   // definimos variables;
-  form: FormGroup = this.fb.group({
-    codigo: ['', [Validators.required]],
-    escuela: ['', [Validators.required]],
-    nombre: ['', [Validators.required]]
-  });
+  form?: FormGroup;
   contact?: Alumno;
 
   ngOnInit(): void {
@@ -42,7 +38,7 @@ export default class AddEntityComponent implements OnInit{
       }) 
     } else {
       this.form = this.fb.group({
-        name: ['', [Validators.required]],
+        codigo: ['', [Validators.required]],
         escuela: ['', [Validators.required]],
         nombre: ['', [Validators.required]],
       })

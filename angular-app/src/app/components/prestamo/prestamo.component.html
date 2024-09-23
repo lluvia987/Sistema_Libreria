@@ -1,0 +1,35 @@
+<br/>
+<div class="input-group">
+  <a class="btn btn-info"  routerLink="" >Agregar Prestamo</a>
+</div>
+<br/>
+<div class="container"><h2>Prestamo</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID Prestamo</th>
+          <th scope="col">ID Libro</th>
+          <th scope="col">Codigo Alumnp</th>
+          <th scope="col">Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(prest of listaPrestamos; track prest.cod_prestamo) {
+          <tr> <!-- Usando forloop.counter -->
+              <td>{{prest.cod_prestamo}}</td>
+              <td>{{prest.id}}</td> 
+              <td>{{prest.codigo}}</td>
+              <td>{{prest.fecha}}</td>
+              <td>
+                <a class="btn btn-info" [routerLink]="[prest.cod_prestamo, 'edit']">Editar</a>
+    
+                <a  class="btn btn-danger" (click)="eliminarPrestamo(prest)">Eliminar</a>
+              </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    
+</div>
+    
