@@ -1,0 +1,26 @@
+
+<div class="row row-cols-3 jusitfy-content-center">
+  @if(form) {
+    <form  [formGroup] = "form" (ngSubmit)="create_or_save()">
+      <div class="mb-3">
+        <label for = "codigo">codigo</label>
+        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="codigo">
+      </div>
+
+      <div class="mb-3">
+        <label for = "escuela">escuela</label>
+        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="escuela">
+      </div>
+
+      <div class="mb-3">
+        <label for = "nombre">nombre</label>
+        <input id="codigo" type="text" placeholder="codigo" class="form-control" formControlName="nombre">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">
+        
+      </button>
+
+    </form>
+  }
+</div>

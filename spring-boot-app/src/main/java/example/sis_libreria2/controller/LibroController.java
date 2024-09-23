@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 // http://localhost:8080/api/libros
 @RequestMapping("/api/libros")

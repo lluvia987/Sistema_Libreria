@@ -1,13 +1,16 @@
 package example.sis_libreria2.controller;
 
-import example.sis_libreria2.entity.Prestamo;
-import example.sis_libreria2.services.PrestamoService;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+import org.springframework.web.bind.annotation.*;
+
+import example.sis_libreria2.entity.Prestamo;
+import example.sis_libreria2.services.PrestamoService;
+
+@CrossOrigin
 @RestController
 // http://localhost:8080/api/prestamos
+
 @RequestMapping("/api/prestamos")
 public class PrestamoController {
 
