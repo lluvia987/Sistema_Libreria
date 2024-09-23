@@ -21,7 +21,7 @@ create(alumno: Alumno) {
   return this.http.post<Alumno>(`http://localhost:8080/api/alumnos`, alumno);
 }
 
-update(id: string, alumno: Alumno) {
+update(alumno: Alumno) {
   return this.http.put<Alumno>(`http://localhost:8080/api/alumnos`, alumno);
 }
 

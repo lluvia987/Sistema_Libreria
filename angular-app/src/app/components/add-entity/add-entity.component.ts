@@ -111,7 +111,7 @@ export default class AddEntityComponent implements OnInit{
   create_or_save() {
     const alumno_formulario = this.form!.value;
     if (this.contact) {
-      this.contactService.update(this.contact.codigo, alumno_formulario)
+      this.contactService.update(alumno_formulario)
       .subscribe(()=>{
         this.router.navigate(['/alumnos']);
       });

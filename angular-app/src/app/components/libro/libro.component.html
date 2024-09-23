@@ -3,7 +3,7 @@
   <a class="btn btn-info"  routerLink="/agregar" [queryParams]="{ validLibro: true }">Agregar Libro</a>
 </div>
 <br/>
-<div class="container"><h2>Alumnos</h2>
+<div class="container"><h2>Libros</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -26,7 +26,7 @@
               <td>{{libro.categoria}}</td>
               <td>{{libro.cantidad}}</td>
               <td>
-                <a class="btn btn-info" [routerLink]="['/',libro.id, 'edit']">Editar</a>
+                <a class="btn btn-info" [routerLink]="['/',libro.id, 'edit']" [queryParams]="{ validLibro: true }">Editar</a>
     
                 <a  class="btn btn-danger" (click)="deleteLibro(libro)">Eliminar</a>
               </td>

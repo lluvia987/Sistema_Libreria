@@ -22,7 +22,7 @@
               <td>{{prest.codigo}}</td>
               <td>{{prest.fecha}}</td>
               <td>
-                <a class="btn btn-info" [routerLink]="[prest.cod_prestamo, 'edit']">Editar</a>
+                <a class="btn btn-info" [routerLink]="['/',prest.cod_prestamo, 'edit']" [queryParams]="{ validPrestamo: true }">Editar</a>
     
                 <a  class="btn btn-danger" (click)="eliminarPrestamo(prest)">Eliminar</a>
               </td>

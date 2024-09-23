@@ -22,8 +22,16 @@ export default class PrestamoComponent implements OnInit{
     });
   }
 
-  eliminarPrestamo(prestamo: Prestamo) {
+  loadAll() {
+    this.prestamoService.list().subscribe(pres =>{
+      this.listaPrestamos = pres;
+    });
+  }
 
+  eliminarPrestamo(prestamo: Prestamo) {
+    this.prestamoService.delete(prestamo.cod_prestamo).subscribe(() =>{
+      this.loadAll();
+    });
   }
 
 }

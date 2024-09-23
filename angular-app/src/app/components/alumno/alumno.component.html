@@ -20,7 +20,7 @@
               <td>{{alumno.escuela}}</td> 
               <td>{{alumno.nombre}}</td>
               <td>
-                <a class="btn btn-info" [routerLink]="['/',alumno.codigo, 'edit']">Editar</a>
+                <a class="btn btn-info" [routerLink]="['/',alumno.codigo, 'edit']" [queryParams]="{ validAlumno: true }">Editar</a>
     
                 <a  class="btn btn-danger" (click)="deleteAlumno(alumno)">Eliminar</a>
               </td>
