@@ -24,7 +24,7 @@ export default class AlumnoComponent implements OnInit{
       this.alumnos = alumnosparam;
     })
   }
-
+  //agrefndo
   deleteAlumno(alumno: Alumno) {
     this.alumnoService.delete(alumno.codigo)
     .subscribe(()=>{
