@@ -42,7 +42,7 @@ export default class AddEntityComponent implements OnInit{
       }) 
     } else {
       this.form = this.fb.group({
-        name: ['', [Validators.required]],
+        codigo: ['', [Validators.required]],
         escuela: ['', [Validators.required]],
         nombre: ['', [Validators.required]],
       })
@@ -54,12 +54,13 @@ export default class AddEntityComponent implements OnInit{
     if (this.contact) {
       this.contactService.update(this.contact.codigo, alumno_formulario)
       .subscribe(()=>{
-        this.router.navigate(['/']);
+        this.router.navigate(['/alumnos']);
       });
     }else {
       this.contactService.create(alumno_formulario)
       .subscribe(()=>{
-        this.router.navigate(['/']);
+        console.log('Alumno creado exitosamente')
+        this.router.navigate(['/alumnos']);
       });
     }
 
